@@ -6,6 +6,10 @@ metadata:
   namespace: {{ .Release.Namespace }}  
   labels:
     {{- include "unifi.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: LoadBalancer
   ports: 
@@ -39,6 +43,10 @@ metadata:
   name: {{ include "unifi.fullname" . }}-udp
   labels:
     {{- include "unifi.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: LoadBalancer
   ports: 
