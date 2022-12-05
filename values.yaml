@@ -24,7 +24,6 @@ environment:
 service:
   type: "LoadBalancer"
   ports:
-    devicecom: 8080
     webapi: 8443
   appDiscovery: false
   syslogCapture: false

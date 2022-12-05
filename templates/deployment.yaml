@@ -69,12 +69,12 @@ spec:
           - containerPort: 1900
             protocol: UDP
             name: appdiscovery
-          {{- endif }}
+          {{- end }}
           {{- if .Values.service.syslogCapture }}
           - containerPort: 5514
             protocol: UDP
             name: syslogcapture    
-          {{- endif }}
+          {{- end }}
           readinessProbe:
             tcpSocket:
               port: 8080

@@ -55,13 +55,13 @@ spec:
     targetPort: 1900
     protocol: UDP
     name: appdiscovery
-  {{- endif }}
+  {{- end }}
   {{- if .Values.service.syslogCapture }}
   - port: 5514
     targetPort: 5514
     protocol: UDP
     name: syslogcapture    
-  {{- endif }}
+  {{- end }}
   selector:
     {{- include "unifi.selectorLabels" . | nindent 4 }}
 
