@@ -1,17 +1,17 @@
 apiVersion: v2
 name: unifi-controller
-description: A Helm chart for deploying a unifi-controller on Kubernetes
+description: A Helm chart for deploying a UniFi controller to Kubernetes
 type: application
-version: 1.0.6
+version: 2.0.0
 keywords:
   - unifi
   - controller 
   - ubiquiti
 home: https://github.com/lukibahr/unifi-controller-helm-chart
-appVersion: "v6.5.55"
+appVersion: "7.3.76"
 maintainers:
-  - name: Lukas Bahr
-    email: hello@lukasbahr.de
-    url: https://lukasbahr.de
+  - name: Stefan Moonen
+    email: stefan@qonstrukt.nl
+    url: https://qonstrukt.nl
 # annotations:
 #   example: A list of annotations keyed by name (optional).

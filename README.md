@@ -1,8 +1,6 @@
-# DEPRECATED: Unifi Controller Helm Chart
+# Unifi Controller Helm Chart
 
-As I will no longer run unifi controller on my k3s cluster and I've shut down my cluster for an unknown time, I'll no longer maintain this helm chart.
-
-The unifi controller helm chart installs a unifi controller software onto your kubernetes cluster. A Kubernetes cluster (k3s, kind, K8s, or anything else) is required. For exposing the ports, MetalLB or any other LoadBalancer implementation is required.
+The UniFi Controller helm chart installs a unifi controller software onto your kubernetes cluster. A Kubernetes cluster (k3s, kind, K8s, or anything else) is required. For exposing the ports, MetalLB or any other LoadBalancer implementation is required.
 
 ## Controller ports
 
@@ -22,21 +20,9 @@ The following is a list of ports that are used by the unifi controller. The port
 |UDP|10001|Port used for device discovery|
 |UDP|1900|Port used for "Make application discoverable on L2 network" in the UniFi Network settings|
 
-## Security issues
-
-|CVE|Fixed version|Status|
-|--|--|--|
-|Log4Shell (CVE-2021-44228)|v6.5.54|mitigated|
-
-## Open todos / tasks
-
-- Add support for MongoDB as the database backend
-- Add sidecar container for storing backups on S3 or any other storage provider
-- Add monitoring, including prometheus-snmp exporter
-
 ## Further reading
 
-- releaser action used for releasing the charts: [https://github.com/helm/chart-releaser-action](https://github.com/helm/chart-releaser-action)
-- Jacob alberty's container [https://hub.docker.com/r/jacobalberty/unifi](https://hub.docker.com/r/jacobalberty/unifi) and repository [https://github.com/jacobalberty/unifi-docker](https://github.com/jacobalberty/unifi-docker)
-- Chart releaser used for publishing helm chart: [https://github.com/helm/chart-releaser](https://github.com/helm/chart-releaser)
+- The original chart from Lukas Bahr: [https://github.com/lukibahr/unifi-controller-helm-chart](https://github.com/lukibahr/unifi-controller-helm-chart)
+- Releaser action used for releasing the charts: [https://github.com/helm/chart-releaser-action](https://github.com/helm/chart-releaser-action)
+- The image used from linuxserver.io: [https://hub.docker.com/r/linuxserver/unifi-controller](https://hub.docker.com/r/linuxserver/unifi-controller)
 - Unifi controller ports: [https://help.ui.com/hc/en-us/articles/218506997-UniFi-Ports-Used](https://help.ui.com/hc/en-us/articles/218506997-UniFi-Ports-Used)

@@ -35,10 +35,14 @@ spec:
           env:
           - name: TZ
             value: {{ .Values.environment.timezone }}
-          - name: RUNAS_UID0
-            value: "false"
-          - name: UNIFI_STDOUT
-            value: "{{ .Values.environment.stdout }}"
+          - name: PUID
+            value: "{{ .Values.environment.uid }}"
+          - name: PGID
+            value: "{{ .Values.environment.gid }}"
+          - name: MEM_LIMIT
+            value: "{{ .Values.environment.memLimit }}"
+          - name: MEM_STARTUP
+            value: "{{ .Values.environment.memStartup }}"
           ports:
           - containerPort: 8080
             protocol: TCP
@@ -60,7 +64,17 @@ spec:
             name: apdiscovery
           - containerPort: 3478
             protocol: TCP
-            name: stun     
+            name: stun
+          {{- if .Values.service.appDiscovery }}
+          - containerPort: 1900
+            protocol: UDP
+            name: appdiscovery
+          {{- endif }}
+          {{- if .Values.service.syslogCapture }}
+          - containerPort: 5514
+            protocol: UDP
+            name: syslogcapture    
+          {{- endif }}
           readinessProbe:
             tcpSocket:
               port: 8080
@@ -74,9 +88,9 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - mountPath: "/unifi"
+            - mountPath: "/config"
               name: data
-            - mountPath: "/unifi/data/backup"              
+            - mountPath: "/config/data/backup"              
               name: backup-data
       volumes:
         {{- if .Values.persistence }}

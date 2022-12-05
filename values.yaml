@@ -1,7 +1,7 @@
 image:
-  repository: jacobalberty/unifi
+  repository: linuxserver/unifi-controller
   pullPolicy: IfNotPresent
-  tag: "v6.5.55"
+  tag: 
 
 replicaCount: 1
 
@@ -16,12 +16,18 @@ serviceAccount:
 
 environment:
   timezone: "Europe/Berlin"
-  stdout: true
+  uid: 1000
+  gid: 1000
+  memLimit: 1920    # Keep this a little below the resource limits
+  memStartup: 1024  # Set this rougly to the resource requests
 
 service:
   type: "LoadBalancer"
   ports:
+    devicecom: 8080
     webapi: 8443
+  appDiscovery: false
+  syslogCapture: false
 
 ingress:
   enabled: true
@@ -77,10 +83,10 @@ securityContext: {}
 resources: 
   limits:
     cpu: 500m
-    memory: 1Gi
+    memory: 2Gi
   requests:
     cpu: 250m
-    memory: 512Mi
+    memory: 1Gi
 
 
 nodeSelector: {}
